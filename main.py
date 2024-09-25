@@ -12,10 +12,12 @@ morse_to_letter = {
     '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....',
     '6': '-....', '7': '--...', '8': '---..', '9': '----.',
 }
+
 morse_to_letter_values = {str(value) for value in morse_to_letter.values()}
 
 
 def convertion():
+    your_output.delete("1.0", "end")
     text_value = your_input.get('1.0', 'end')
     if total % 2 == 0:
         for t in text_value.upper():
@@ -24,17 +26,16 @@ def convertion():
                     your_output.insert('1.0', value)
     else:
         text = ''
-        #        for length in range(0, len(text_value) - 1):
         for key, value in morse_to_letter.items():
             part = text_value[:len(value)]
             if value == part:
                 text += key
                 text_value = text_value[len(value):]
-                #                    length = 0
         your_output.insert('1.0', text)
 
 
 def switch():
+    your_output.delete("1.0", "end")
     global total
     if total == 10:
         total = 0
